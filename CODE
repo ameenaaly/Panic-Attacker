@@ -1,0 +1,295 @@
+from m5stack import *
+from m5stack_ui import *
+from uiflow import *
+import time
+from emoji import Emoji
+import unit
+
+screen = M5Screen()
+screen.clean_screen()
+screen.set_screen_bg_color(0x000000)
+heart_0 = unit.get(unit.HEART, unit.PORTA)
+
+
+
+
+emoji0 = Emoji(7, 7, 15, 9)
+
+HeartRate = M5Label('Text', x=36, y=67, color=0xffffff, font=FONT_UNICODE_24, parent=None)
+OxygenSaturation = M5Label('Text', x=35, y=184, color=0xfbfbfb, font=FONT_UNICODE_24, parent=None)
+label0 = M5Label('Heart Rate:', x=15, y=29, color=0xffffff, font=FONT_UNICODE_24, parent=None)
+label1 = M5Label('Oxygen Saturation:', x=15, y=143, color=0xffffff, font=FONT_UNICODE_24, parent=None)
+label2 = M5Label('Text', x=15, y=85, color=0xffffff, font=FONT_UNICODE_24, parent=None)
+ButtonYes = M5Btn(text='Yes', x=52, y=176, w=70, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+label3 = M5Label('Text', x=15, y=135, color=0xf4f4f4, font=FONT_UNICODE_24, parent=None)
+excercise2 = M5Btn(text='Counting Excercise', x=29, y=135, w=240, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+excercise3 = M5Btn(text='Relaxing Excercise', x=36, y=176, w=240, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+ButtonNo = M5Btn(text='No', x=200, y=177, w=70, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+excercise1 = M5Btn(text='Breathing Excercise', x=30, y=85, w=240, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+Continue2 = M5Btn(text='Continue', x=74, y=176, w=150, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+Continue3 = M5Btn(text='Continue', x=74, y=176, w=150, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+continue4 = M5Btn(text='Continue', x=74, y=176, w=150, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+continue1 = M5Btn(text='Continue', x=74, y=176, w=150, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+continue5 = M5Btn(text='Continue', x=74, y=176, w=150, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_UNICODE_24, parent=None)
+
+def Continue2_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  Continue2.set_hidden(True)
+  label0.set_text('The 5-4-3-2-1 method')
+  label2.set_text('Touch 3 objects in')
+  label3.set_text('your surroundings. ')
+  Continue3.set_hidden(False)
+  pass
+Continue2.pressed(Continue2_pressed)
+
+def continue1_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  continue1.set_hidden(True)
+  label0.set_text('The 5-4-3-2-1 method')
+  label2.set_text('Listen for 4 sounds in')
+  label3.set_text('your surroundings. ')
+  Continue2.set_hidden(False)
+  pass
+continue1.pressed(continue1_pressed)
+
+def excercise1_pressed():
+  # global params
+  lcd.clear()
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  for count in range(2):
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0]], 0x339999)
+    wait(0.57)
+    emoji0.show_map([[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]], 0x339999)
+    power.setVibrationEnable(True)
+    power.setVibrationIntensity(20)
+    wait(1)
+    power.setVibrationEnable(False)
+    wait(6)
+    power.setVibrationEnable(True)
+    power.setVibrationIntensity(20)
+    wait(1)
+    power.setVibrationEnable(False)
+    emoji0.show_map([[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0]], 0x339999)
+    wait(1.3)
+    emoji0.show_map([[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0]], 0x339999)
+    wait(1.3)
+    emoji0.show_map([[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[1,1,1,1,1,1,1],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0]], 0x339999)
+    wait(1.3)
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,1,1,1,1,1,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    wait(1.3)
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,1,1,1,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    wait(1.3)
+    emoji0.show_map([[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,1,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]], 0x339999)
+    power.setVibrationEnable(True)
+    power.setVibrationIntensity(20)
+    wait(1)
+    power.setVibrationEnable(False)
+  lcd.clear()
+  label0.set_hidden(False)
+  label0.set_text('Pick an exercise:')
+  excercise1.set_hidden(False)
+  excercise2.set_hidden(False)
+  excercise3.set_hidden(False)
+  pass
+excercise1.pressed(excercise1_pressed)
+
+def ButtonYes_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  label0.set_hidden(False)
+  label2.set_hidden(True)
+  label3.set_hidden(True)
+  label0.set_text('Pick an exercise:')
+  excercise1.set_hidden(False)
+  excercise2.set_hidden(False)
+  excercise3.set_hidden(False)
+  ButtonNo.set_hidden(True)
+  ButtonYes.set_hidden(True)
+  pass
+ButtonYes.pressed(ButtonYes_pressed)
+
+def excercise3_pressed():
+  # global params
+  pass
+excercise3.pressed(excercise3_pressed)
+
+def excercise2_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  excercise1.set_hidden(True)
+  excercise3.set_hidden(True)
+  excercise2.set_hidden(True)
+  label0.set_hidden(False)
+  label2.set_hidden(False)
+  label3.set_hidden(False)
+  label0.set_text('The 5-4-3-2-1 method')
+  label2.set_text('List 5 objects in your')
+  label3.set_text('surroundings. ')
+  continue1.set_hidden(False)
+  pass
+excercise2.pressed(excercise2_pressed)
+
+def continue5_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  continue5.set_hidden(True)
+  label2.set_hidden(True)
+  label0.set_text('Pick an exercise:')
+  excercise1.set_hidden(False)
+  excercise2.set_hidden(False)
+  excercise3.set_hidden(False)
+  pass
+continue5.pressed(continue5_pressed)
+
+def Continue3_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  Continue3.set_hidden(True)
+  label0.set_text('The 5-4-3-2-1 method')
+  label2.set_text('Identify 2 smells in')
+  label3.set_text('your surroundings. ')
+  continue4.set_hidden(False)
+  pass
+Continue3.pressed(Continue3_pressed)
+
+def continue4_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  continue4.set_hidden(True)
+  label3.set_hidden(True)
+  label0.set_text('The 5-4-3-2-1 method')
+  label2.set_text('Think of 1 taste')
+  continue5.set_hidden(False)
+  pass
+continue4.pressed(continue4_pressed)
+
+def ButtonNo_pressed():
+  # global params
+  power.setVibrationEnable(True)
+  power.setVibrationIntensity(20)
+  wait(0.1)
+  power.setVibrationEnable(False)
+  while True:
+    label0.set_hidden(False)
+    HeartRate.set_hidden(False)
+    OxygenSaturation.set_hidden(False)
+    label1.set_hidden(False)
+    HeartRate.set_text(str(heart_0.getHeartRate()))
+    OxygenSaturation.set_text(str(heart_0.getSpO2()))
+    label0.set_text('Heart Rate')
+    label1.set_text('Oxygen Saturation')
+    label2.set_hidden(True)
+    label3.set_hidden(True)
+    ButtonYes.set_hidden(True)
+    ButtonNo.set_hidden(True)
+    excercise1.set_hidden(True)
+    excercise2.set_hidden(True)
+    excercise3.set_hidden(True)
+    continue1.set_hidden(True)
+    Continue2.set_hidden(True)
+    Continue3.set_hidden(True)
+    continue4.set_hidden(True)
+    continue5.set_hidden(True)
+    wait(0.3)
+  pass
+ButtonNo.pressed(ButtonNo_pressed)
+
+
+heart_0.setLedCurrent(0x04, 0x01)
+heart_0.setMode(0x03)
+power.setVibrationEnable(False)
+lcd.clear()
+while True:
+  HeartRate.set_text(str(heart_0.getHeartRate()))
+  OxygenSaturation.set_text(str(heart_0.getSpO2()))
+  label0.set_text('Heart Rate')
+  label1.set_text('Oxygen Saturation')
+  label2.set_hidden(True)
+  label3.set_hidden(True)
+  ButtonYes.set_hidden(True)
+  ButtonNo.set_hidden(True)
+  excercise1.set_hidden(True)
+  excercise2.set_hidden(True)
+  excercise3.set_hidden(True)
+  continue1.set_hidden(True)
+  Continue2.set_hidden(True)
+  Continue3.set_hidden(True)
+  continue4.set_hidden(True)
+  continue5.set_hidden(True)
+  wait(0.3)
+  if (heart_0.getHeartRate()) >= 110 and (heart_0.getHeartRate()) < 150:
+    HeartRate.set_hidden(True)
+    OxygenSaturation.set_hidden(True)
+    label0.set_hidden(True)
+    label1.set_hidden(True)
+    label2.set_hidden(False)
+    label3.set_hidden(False)
+    power.setVibrationEnable(True)
+    power.setVibrationIntensity(20)
+    wait(0.1)
+    power.setVibrationEnable(False)
+    label2.set_text('You may be experiencing')
+    label3.set_text('a panic attack')
+    wait(3)
+    label2.set_text('Would you like to begin')
+    label3.set_text('some calming exercises?')
+    ButtonYes.set_hidden(False)
+    ButtonNo.set_hidden(False)
+    wait(60)
+  if (heart_0.getHeartRate()) >= 150:
+    HeartRate.set_hidden(True)
+    OxygenSaturation.set_hidden(True)
+    label0.set_hidden(True)
+    label1.set_hidden(True)
+    label2.set_hidden(False)
+    label3.set_hidden(False)
+    label2.set_text('You may be experiencing')
+    label3.set_text(' atrial fibrillation')
+    power.setVibrationEnable(True)
+    power.setVibrationIntensity(50)
+    wait(2)
+    label2.set_text('See your doctor ')
+    label3.set_text('immediately')
+    wait(1)
+    for count2 in range(10):
+      screen.set_screen_bg_color(0xff0000)
+      wait(0.3)
+      screen.set_screen_bg_color(0x000000)
+      wait(0.3)
+  power.setVibrationEnable(False)
